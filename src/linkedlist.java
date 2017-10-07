@@ -1,6 +1,7 @@
 
 
 public class linkedlist<T>  {
+	// aka
     private int a;
 	public class Node {
 		private T data;
