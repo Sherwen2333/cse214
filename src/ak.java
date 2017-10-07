@@ -68,6 +68,9 @@ public class ak<T>  {
 		b.data=temp;
 //		System.out.println(a.data+"-*-"+b.data);
 	}
+	public Node getLast() {
+		return last;
+	}
 	 public void add(T item) {
 		 if (a==0){
 			 first=new Node(first, item, first,0);

@@ -8,126 +8,88 @@ public class CSE214hw2_1 {
 		Scanner aScanner = new Scanner(aFile);
 		int time = aScanner.nextInt();
 		aScanner.nextLine();
-		System.out.println(time);
 		for (int iz = 0; iz < time; iz++) {
 			String[] akb = aScanner.nextLine().split(" ");
-			int a_number = Integer.parseInt(akb[0]);
 			int b_number = Integer.parseInt(akb[1]);
-			ak<String> aak = new ak<>(aScanner.nextLine().split(" "));
-			ak<String> bak = new ak<>(aScanner.nextLine().split(" "));
-			System.out.println(a_number + " " + b_number);
-			String[] leftPeople = new String[b_number];
-			aak.print();
-			bak.print();
-//			System.out.println(bak.getSize());
-			for (int i = 0; i < aak.getSize() - 1; i++) {
-				for (int a = i + 1; a < aak.getSize(); a++) {
-					if (Integer.parseInt(bak.getter(a).getData()) < Integer
-							.parseInt(bak.getter(i).getData())) {
-						aak.Switch(aak.getter(a), aak.getter(i));
-						bak.Switch(bak.getter(a), bak.getter(i));
-					}
+			String namenn=aScanner.nextLine();
+			if(namenn.split(" ").length==1) {
+				System.out.println(namenn);
+			}
+			String numm=aScanner.nextLine();
+			name(namenn, numm,b_number);
+		}
+		aScanner.close();
+
+	}
+	public static void name(String btring,String atring,int z) {
+		String [] nameni= new String[z];
+		ak<Integer> a = new ak<Integer>();
+		ak<String> b = new ak<String>();		
+		for (String iString : btring.split(" ")) {
+			b.add(iString);
+		}
+		for (String iString : atring.split(" ")) {
+			a.add(Integer.parseInt(iString));
+		}
+		sort(a, b);
+		int first_num=z;
+		int k=(a.getLast().getData()-a.getFirst().getData())/first_num;
+		int az=a.getFirst().getData();
+		int ak=az+k;
+		for (int i=0;i<first_num;i++) {
+			if (i!=first_num-1) {
+				nameni[i]=name(spilt(a, b, az, ak), first_num);
+				az=ak;
+				ak+=k;
+			}
+			else {
+				nameni[i]=name(spilt(a, b, az, a.getLast().getData()), first_num);
+			}
+		}
+		for (String i:btring.split(" ")) {
+			for (String ag:nameni) {
+				if (ag==null) break;
+				if (ag.equals(i)) {
+					System.out.print(ag+" ");
 				}
 			}
-			// Sort
-			aak.print();
-			bak.print();
-		System.out.println(	bak.getter(1).getData()+"-111");
-			System.out.println(bak.getSize());
-			int a=Integer.parseInt(bak.getFirst().getData());
-			//Spilt into K buckets
-			for (int i=0;i<b_number;i++) {
-				ak<String> az=new ak<String>();
-				ak<String> bz=new ak<String>();
-				int asd=bak.getSize();
-//				System.out.println(bak.getSize()+"--");
-					for (int isd =0;isd<asd;isd++) {
-						System.out.println(isd+"0/0");
-						if(Integer.parseInt(bak.getter(isd).getData())<a+b_number&&i!=b_number-1)
-						{
-							az.add(aak.getter(isd).getData());
-							bz.add(bak.getter(isd).getData());
-							aak.remove(aak.getter(isd).getData());
-							bak.remove(bak.getter(isd).getData());
-						}
-						else {
-							az=aak;
-							bz=bak;
-							break;
-						}
-					}
-					
-					String aString = az.getFirst().getData();
-					while (az.getSize()!=1) {
-						az.print();
-						System.out.println("---------");
-						for(int iaz=0;iaz<b_number-1;iaz++) {
-						aString=az.getter(aString).getNext().getData();}
-						String aString2=az.getter(aString).getNext().getData();
-						az.remove(aString);
-						aString=aString2;
-					}
-					leftPeople[i]=aString;
+		 }
+		System.out.println();
+	}
+
+	public static<T> ak<T> spilt(ak<Integer> a,ak<T>b,int k,int z) {
+		ak<T> aks= new ak<>();
+		for (int i =0;i<a.getSize();i++) {
+			if (a.getter(i).getData()>=k&&a.getter(i).getData()<z) {
+				aks.add(b.getter(i).getData());
+			}
+		}
+		return aks;
+	}
+	public static <T> void sort(ak<Integer> a, ak<T> b) {
+		for (int i = 0; i < a.getSize() - 1; i++) {
+			for (int az = i + 1; az < a.getSize(); az++) {
+				if (a.getter(i).getData() > a.getter(az).getData()) {
+					a.Switch(a.getter(i), a.getter(az));
+					b.Switch(b.getter(i), b.getter(az));
+
+				}
 			}
 		}
 
-		// for (int i=0;i<2;i++){
-		// System.out.println(aScanner.nextLine());
-		// }
-		// String[] aak= aScanner.nextLine().split(" ");
-		// String[] bStrings= aScanner.nextLine().split(" ");
-		// System.out.println(aak.length+" "+bStrings.length);
-		// for (String a: aak)
-		// System.out.print(a+",");
-		// System.out.println();
-		// for (String a: bStrings)
-		// System.out.print(a+",");
-		// String[][] ak1=new String[4][2];
-		// String[][] ak2=new String[3][2];
-		// String[][] ak3=new String[3][2];
-		//
-		// aScanner.close();
+	}
 
-		// int indexa=0;
-		// int indexb=0;
-		// int indexc=0;
-		// for (int i=0;i<aak.length;i++){
-		// if(Integer.parseInt(bStrings[i])<=4){
-		// ak1[indexa][0]=aak[i];
-		// ak1[indexa][1]=bStrings[i];
-		// indexa++;
-		// }
-		// else if(Integer.parseInt(bStrings[i])<=7){
-		// ak2[indexb][0]=aak[i];
-		// ak2[indexb][1]=bStrings[i];
-		// indexb++;
-		//
-		// }
-		// else if(Integer.parseInt(bStrings[i])<=11){
-		// ak3[indexc][0]=aak[i];
-		// ak3[indexc][1]=bStrings[i];
-		// indexc++;
-		//
-		// }
-		// }
-		// System.out.println();
-		// for (String[] a: ak1)
-		// System.out.print(a[0]+",");
-		// System.out.println();
-		// for (String[] a: ak1)
-		// System.out.print(a[1]+",");
-		// System.out.println();
-		// for (String[] a: ak2)
-		// System.out.print(a[0]+",");
-		// System.out.println();
-		// for (String[] a: ak2)
-		// System.out.print(a[1]+",");
-		// System.out.println();
-		// for (String[] a: ak3)
-		// System.out.print(a[0]+",");
-		// System.out.println();
-		// for (String[] a: ak3)
-		// System.out.print(a[1]+",");
-		// System.out.println();
+	public static String name(ak<String> a, int k) {
+		if (a.getSize()==0) return null;
+		String aString = a.getFirst().getData();
+		while (a.getSize() != 1) {
+			for (int i = 0; i < k - 1; i++) {
+				aString = a.getter(aString).getNext().getData();
+			}
+			String aString2 = a.getter(aString).getNext().getData();
+			a.remove(aString);
+			aString = aString2;
+		}
+		return a.getFirst().getData();
 	}
 }
