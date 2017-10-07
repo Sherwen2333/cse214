@@ -2,6 +2,8 @@
 
 public class linkedlist<T>  {
 	// aka
+	// asd
+	//asd
     private int a;
 	public class Node {
 		private T data;
