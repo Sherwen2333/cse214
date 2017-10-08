@@ -1,6 +1,6 @@
 
 
-public class ak<T>  {
+public class LinkedList<T>  {
 	// aka
 	// asd
 	//asd
@@ -35,12 +35,12 @@ public class ak<T>  {
 	}
 	private Node first;
 	private Node last;
-	public ak(T[] a)  {
+	public LinkedList(T[] a)  {
 		for (int i =0;i<a.length;i++) {
 			add(a[i]);
 		}
 	}
-	  public ak() {
+	  public LinkedList() {
 	        first = null;
 	        last = null;
 	        a = 0;

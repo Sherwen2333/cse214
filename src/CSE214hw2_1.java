@@ -23,8 +23,8 @@ public class CSE214hw2_1 {
 	}
 	public static void name(String btring,String atring,int z) {
 		String [] nameni= new String[z];
-		ak<Integer> a = new ak<Integer>();
-		ak<String> b = new ak<String>();		
+		LinkedList<Integer> a = new LinkedList<Integer>();
+		LinkedList<String> b = new LinkedList<String>();		
 		for (String iString : btring.split(" ")) {
 			b.add(iString);
 		}
@@ -57,8 +57,8 @@ public class CSE214hw2_1 {
 		System.out.println();
 	}
 
-	public static<T> ak<T> spilt(ak<Integer> a,ak<T>b,int k,int z) {
-		ak<T> aks= new ak<>();
+	public static<T> LinkedList<T> spilt(LinkedList<Integer> a,LinkedList<T>b,int k,int z) {
+		LinkedList<T> aks= new LinkedList<>();
 		for (int i =0;i<a.getSize();i++) {
 			if (a.getter(i).getData()>=k&&a.getter(i).getData()<z) {
 				aks.add(b.getter(i).getData());
@@ -66,7 +66,7 @@ public class CSE214hw2_1 {
 		}
 		return aks;
 	}
-	public static <T> void sort(ak<Integer> a, ak<T> b) {
+	public static <T> void sort(LinkedList<Integer> a, LinkedList<T> b) {
 		for (int i = 0; i < a.getSize() - 1; i++) {
 			for (int az = i + 1; az < a.getSize(); az++) {
 				if (a.getter(i).getData() > a.getter(az).getData()) {
@@ -79,7 +79,7 @@ public class CSE214hw2_1 {
 
 	}
 
-	public static String name(ak<String> a, int k) {
+	public static String name(LinkedList<String> a, int k) {
 		if (a.getSize()==0) return null;
 		String aString = a.getFirst().getData();
 		while (a.getSize() != 1) {
